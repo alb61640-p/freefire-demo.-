@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>شحن الجواهر</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:linear-gradient(135deg,#0d1225,#27345e);color:#fff}
+.box{width:92%;max-width:430px;margin:40px auto;padding:25px;background:#202944;border-radius:22px}
+h1{text-align:center}
+label{display:block;margin:15px 0 7px}
+input,select{width:100%;padding:14px;border:0;border-radius:10px;font-size:16px}
+button{width:100%;padding:15px;margin-top:18px;border:0;border-radius:10px;font-size:17px;font-weight:bold}
+.google{background:#fff;color:#222}
+.charge{background:#ffb700;color:#111}
+.result{display:none;margin-top:20px;padding:18px;background:#111827;border-radius:12px;text-align:center;line-height:2}
+.loader{width:35px;height:35px;border:4px solid #555;border-top-color:#ffd43b;border-radius:50%;animation:spin 1s linear infinite;margin:10px auto}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<div class="box">
+<h1>💎 شحن الجواهر</h1>
+
+<button class="google" onclick="googleDemo()">🔵 تسجيل الدخول</button>
+
+<label>Player ID</label>
+<input id="player" placeholder="أدخل Player ID">
+
+<label>كمية الجواهر</label>
+<select id="diamonds">
+<option value="100">💎 100 جوهرة</option>
+<option value="310">💎 310 جوهرة</option>
+<option value="520">💎 520 جوهرة</option>
+<option value="1060">💎 1060 جوهرة</option>
+<option value="2180">💎 2180 جوهرة</option>
+</select>
+
+<button class="charge" onclick="charge()">💎 شحن</button>
+
+<div class="result" id="result"></div>
+</div>
+
+<script>
+function googleDemo(){
+  alert("تسجيل الدخول هنا لا يطلب كلمة مرور Google أو رمز التحقق.");
+}
+
+function charge(){
+  const player=document.getElementById("player").value.trim();
+  const diamonds=document.getElementById("diamonds").value;
+  const result=document.getElementById("result");
+
+  if(!player){
+    alert("أدخل Player ID أولاً");
+    return;
+  }
+
+  result.style.display="block";
+  result.innerHTML='<div class="loader"></div>جاري معالجة الطلب...';
+
+  setTimeout(()=>{
+    result.innerHTML=
+      '✅ تم إرسال الطلب بنجاح<br><br>'+
+      'Player ID: <b>'+player+'</b><br>'+
+      'الجواهر: 💎 <b>'+diamonds+'</b>';
+  },2000);
+}
+</script>
+
+</body>
+  </html>
